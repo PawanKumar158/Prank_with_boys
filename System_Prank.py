@@ -1,8 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
 import random
+import time
 
-def fake_error_message():
+def fake_error_messages():
     messages = [
         "Error: Disk read failure. Please insert a floppy disk to continue.",
         "Critical Error: Unexpected system shutdown. Reboot required.",
@@ -16,18 +17,22 @@ def fake_error_message():
         "Warning: Unauthorized access attempt detected."
     ]
     
-    # Randomly select an error message
-    selected_message = random.choice(messages)
-    
     # Create the root window
     root = tk.Tk()
     root.withdraw()  # Hide the root window
     
-    # Show the fake error message
-    messagebox.showerror("Error", selected_message)
+    for _ in range(10):
+        # Randomly select an error message
+        selected_message = random.choice(messages)
+        
+        # Show the fake error message
+        messagebox.showerror("Error", selected_message)
+        
+        # Wait for 2 seconds before showing the next message
+        time.sleep(2)
     
-    # Destroy the root window after showing the message
+    # Destroy the root window after showing all messages
     root.destroy()
 
 if __name__ == "__main__":
-    fake_error_message()
+    fake_error_messages()
